@@ -6,7 +6,9 @@ n=int(input())
 
 tmp=[0 for _ in range(n+1)]
 tmp[1]=1
-tmp[2]=2
+
+if n>=2:
+    tmp[2]=2
 
 r=3
 
