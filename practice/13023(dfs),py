@@ -1,0 +1,40 @@
+import sys
+
+sys.stdin=open("input.txt","r")
+
+n,m = map(int,input().split())
+l=[[] for _ in range(n)]
+visited=[False for _ in range(n) ]
+state=0
+
+def dfs(node,count):
+    global state
+    visited[node]=True
+    if count==5:
+        state=1
+        return
+    else:
+        for j in l[node]:
+            if visited[j]==False:
+                dfs(j,count+1)
+                visited[j]=False
+                if state==1:
+                    return
+
+for _ in range(m):
+    a,b=map(int,input().split())
+    l[a].append(b)
+    l[b].append(a)
+
+for i in range(n):
+    dfs(i,1)
+    visited[i]=False
+    if state:
+        break
+print(state)
+
+
+
+        
+        
+
